@@ -1,0 +1,18 @@
+### topic 2a ###
+data = read.table("C:\\Users\\evert\\Desktop\\spellman.txt", header = T);
+### topic 2b ###
+rownames(data) <- as.character(data$row.names);
+data <- data[,-1];
+### topic 3a ###
+dim(data);
+### topic 3b ###
+cdc15 <- data[, 23:46];
+data.mean <- rowMeans(data, na.rm = TRUE);
+na.cdc15 <- is.na(data["YAL002W", 23:46]);
+cdc15[2, na.cdc15] <- data.mean["YAL002W"];
+### topic 4 ###
+hist(as.numeric(cdc15[2,]), col="red", main="Histogram of gene #2 in cdc15 experiment", breaks = seq(-1,1,0.1));
+boxplot(as.numeric(cdc15[2,]), col="red", main="Boxplot of gene #2 in cdc15 experiment");
+### topic 5 ###
+plot(x = 1:ncol(cdc15), y = as.numeric(cdc15[2,]), xlab="Samples", ylab="Expression", type="l", col="red", 
+	main="Profile plot of gene #2 in cdc15 experiment", lwd=2);
