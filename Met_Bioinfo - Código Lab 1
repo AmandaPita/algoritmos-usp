@@ -1,0 +1,24 @@
+### topic 2a ###
+data = read.table("C:\\Users\\Amanda\\Documents\\Video aulas\\Métodos de Bioinformática\\Lab 1
+	\\alon.txt", header = T)
+### topic 2b ###
+rownames(data) <- as.character(data$Gene)
+head(rownames(data))
+data <- data[,-1]
+### topic 3 ###
+dim(data)
+### topic 4 ###
+colnames(data)
+### topic 5 ###
+plot(x=data$tumor1, y=data$norm1, xlab="tumor", ylab="normal", main="Tumor sample vs. Normal 
+	sample - 2000 genes")
+### topic 6 ###
+data20 <- data[(1:20),]
+plot(x=data20$norm1, y=data20$norm2, xlab="Normal 1", ylab="Normal 2", main="Normal 1 vs. 
+	Normal 2 - 20 genes")
+### topic 7 ###
+lines(x=data20$norm1, y=data20$norm2)
+### topic 8 ###
+plot(1:ncol(data),(data[5,]/data[15,]), xlab = "samples", ylab = "ratio of gene 5 to gene 15", 
+	main = "Profile plot of genes 5 to 15")
+text(1:ncol(data),data[5,]/data[15,], label = names(data), cex = 1)
